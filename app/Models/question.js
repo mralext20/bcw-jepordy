@@ -10,6 +10,9 @@ export default class Question {
     get AnswerTemplate() {
         return /*html*/`
         <h2>${this.answer}</h2>
+        <button onclick="app.JepordyController.answerRight()">correct!</button>
+        <button onclick="app.JepordyController..answerWrong()">Wrong!</button>
+
         `
     }
 

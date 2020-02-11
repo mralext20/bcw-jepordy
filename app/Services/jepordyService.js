@@ -14,6 +14,16 @@ class JepordyService {
       store.commit('question', quest)
     }).catch(res => console.log(res))
   }
+  answerRight() {
+    let newScore = store.State.score + store.State.question.value
+    store.commit('score', newScore)
+  }
+  answerWrong() {
+    let newScore = store.State.score - store.State.question.value
+
+    store.commit('score', newScore)
+
+  }
 }
 
 const service = new JepordyService();

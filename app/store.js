@@ -3,14 +3,16 @@ import Question from "./Models/question.js";
 
 let _state = {
   /** @type {Question} */
-  question: undefined
+  question: undefined,
+  score: 0
 };
 
 /** Collection of listeners to be called based on keyed state changes
  * @type {{[x:string]: function[]}}
  */
 let _listeners = {
-  question: []
+  question: [],
+  score: []
 };
 
 //NOTE You should not need to change the code from this point down

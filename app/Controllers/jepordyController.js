@@ -5,7 +5,7 @@ import store from "../store.js";
 let target = document.getElementById("target")
 function _draw() {
   let question = store.State.question;
-  console.log(question);
+  // console.log(question);
   target.innerHTML = question.questionTemplate
 }
 function _drawAnswer() {
@@ -13,11 +13,18 @@ function _drawAnswer() {
   target.innerHTML = question.AnswerTemplate
 }
 
+function _drawScore() {
+  let target = document.getElementById("score")
+  target.innerText = store.State.score.toString()
+}
+
+
 
 //Public
 export default class JepordyController {
   constructor() {
     store.subscribe("question", _draw);
+    store.subscribe("score", _drawScore);
     JepordyService.getQuestion();
   }
   showAnswer() {
@@ -25,6 +32,14 @@ export default class JepordyController {
   }
 
   nextQuestion() {
+    JepordyService.getQuestion()
+  }
+  answerRight() {
+    JepordyService.answerRight()
+    JepordyService.getQuestion()
+  }
+  answerWrong() {
+    JepordyService.answerWrong()
     JepordyService.getQuestion()
   }
 
